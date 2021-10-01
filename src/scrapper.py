@@ -1,3 +1,14 @@
+"""BOT_NYCWFSH2
+
+This script allows you to scrape puzzle Across and Down clues from 
+https://www.nytimes.com/crosswords/game/mini.
+
+The scraped clues parsed and saved as json format to the data.json file.
+
+This script need Python 3 to run. Before run the script install packages 
+using `pip install -r requirements.txt`
+"""
+
 from datetime import date
 from bs4 import BeautifulSoup
 import re
@@ -21,7 +32,7 @@ handler.setFormatter(format)
 # Add handlers to the logger
 logger.addHandler(handler)
 
-# define settings 
+# define settings
 DATE = date.today().strftime("%Y/%m/%d")
 NUMBER_CLASS = re.compile('Clue-label.*')
 TEXT_CLASS = re.compile('Clue-text.*')
