@@ -1,7 +1,8 @@
 from datetime import date
-import requests
 from bs4 import BeautifulSoup
 import re
+from selenium.common.exceptions import NoSuchElementException
+import urllib.request
 
 # define settings 
 DATE = date.today().strftime("%Y/%m/%d")
@@ -13,10 +14,10 @@ JSON_LIST = {}
 
 # read content from url
 URL = "https://www.nytimes.com/crosswords/game/mini/" + DATE
-page = requests.get(URL)
+page = urllib.request.urlopen(URL)
 
 # parse content using BeautifulSoup html parser
-soup = BeautifulSoup(page.content, "html.parser")
+soup = BeautifulSoup(page, "html.parser")
 
 try:
     # get Across and Down layout section
@@ -32,11 +33,12 @@ try:
             # get title of each list
             title_element = clue_list.find("h3")
             title_text = title_element.text.strip()
+            print("===" + title_text.upper() + "===")
 
             # get all elements of each list
             clue_elements = clue_list.find_all("li")
             items = []
-                
+
             for clue_element in clue_elements:
                 # get number of clue
                 number_element = clue_element.find("span", class_=NUMBER_CLASS)
@@ -48,16 +50,17 @@ try:
 
                 # create clue items
                 items.append({"number": clue_number, "text": clue_text})
-            
+                print(clue_number + ". " + clue_text)
+
             # create groups with items and append to groups array
             groups.append({"group": title_text, "items": items})
 
         JSON_LIST['clues'] = groups
 
-    except:
+    except NoSuchElementException:
         print("clue_lists not found.")
 
-except:
+except NoSuchElementException:
     print("layout_section not found.")
 
-print(JSON_LIST)
+#print(JSON_LIST)
