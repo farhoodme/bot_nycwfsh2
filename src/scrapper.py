@@ -4,6 +4,7 @@ import re
 from selenium.common.exceptions import NoSuchElementException
 import urllib.request
 import logging
+import json
 
 logging.basicConfig(level=logging.INFO)
 
@@ -76,7 +77,11 @@ try:
                     # create groups with items and append to groups array
                     groups.append({"group": title_text, "items": items})
 
-                JSON_LIST['clues'] = groups
+                JSON_LIST = groups
+
+                # write JSON formatted lists to .json file
+                with open('data.json', 'w', encoding='utf-8') as f:
+                    json.dump(JSON_LIST, f, ensure_ascii=False, indent=4)
 
             except NoSuchElementException:
                 logger.error("Exception occurred on find clue_lists", exc_info=True)
@@ -89,9 +94,3 @@ try:
 
 except Exception:
     logger.error("Exception occurred on open URL", exc_info=True)
-
-
-
-
-
-#print(JSON_LIST)
