@@ -1,0 +1,68 @@
+[
+    {
+        "group": "Across",
+        "items": [
+            {
+                "number": "1",
+                "text": "Australian greeting"
+            },
+            {
+                "number": "5",
+                "text": "Turn back to zero"
+            },
+            {
+                "number": "7",
+                "text": "Key that's equivalent to B♭"
+            },
+            {
+                "number": "9",
+                "text": "Wedded"
+            },
+            {
+                "number": "11",
+                "text": "Country with a maple leaf on its flag"
+            },
+            {
+                "number": "12",
+                "text": "Rap's ___ Thee Stallion"
+            },
+            {
+                "number": "13",
+                "text": "Sandwich shop"
+            }
+        ]
+    },
+    {
+        "group": "Down",
+        "items": [
+            {
+                "number": "1",
+                "text": "\"g,\" to a chemist"
+            },
+            {
+                "number": "2",
+                "text": "Cul-___ (kind of street)"
+            },
+            {
+                "number": "3",
+                "text": "Guru's residence"
+            },
+            {
+                "number": "4",
+                "text": "Had a deep desire"
+            },
+            {
+                "number": "6",
+                "text": "Emergency sorting process"
+            },
+            {
+                "number": "8",
+                "text": "Ride a bike"
+            },
+            {
+                "number": "10",
+                "text": "\"___ California\" (Red Hot Chili Peppers hit)"
+            }
+        ]
+    }
+]

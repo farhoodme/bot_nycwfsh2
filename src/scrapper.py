@@ -9,6 +9,7 @@ This script need Python 3 to run. Before run the script install packages
 using `pip install -r requirements.txt`
 """
 
+import os
 from datetime import date
 from bs4 import BeautifulSoup
 import re
@@ -39,6 +40,7 @@ TEXT_CLASS = re.compile('Clue-text.*')
 LAYOUT_CLASS = re.compile('Layout-clueLists.*')
 LISTS_CLASS = re.compile('ClueList-wrapper.*')
 JSON_LIST = {}
+ROOR_DIR = os.path.basename(os.path.abspath(os.curdir))
 
 # read content from url
 URL = "https://www.nytimes.com/crosswords/game/mini/" + DATE
@@ -91,7 +93,7 @@ try:
                 JSON_LIST = groups
 
                 # write JSON formatted lists to .json file
-                with open('data.json', 'w', encoding='utf-8') as f:
+                with open(ROOR_DIR + '_data.json', 'w', encoding='utf-8') as f:
                     json.dump(JSON_LIST, f, ensure_ascii=False, indent=4)
 
             except NoSuchElementException:
